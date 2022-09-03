@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Abhay2132/vns/issues"
   },
-  "homepage": "https://github.com/Abhay2132/vns#readme"
+  "homepage": "https://github.com/Abhay2132/vns#readme",
+  "engines": {
+    "node": "16.16.0"
+  }
 }
