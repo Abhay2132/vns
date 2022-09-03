@@ -1,0 +1,19 @@
+body {
+	margin:  0;
+	font-family: arial;
+}
+
+.main-nav {
+	display: flex;
+	justify-content: center;
+	background: #157;
+}
+
+.main-heading {
+	margin: 0;
+	padding: 10px;
+	color: #fff;
+	font-size: 25px;
+	font-weight: 400;
+	font-family: cursive;
+}
