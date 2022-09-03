@@ -3,9 +3,9 @@ const mime = require("./mime.json");
 
 function logger(req, res) {
 	const { url, method } = req;
-	const time = performance.now();
+	const time = Date.now();
 	res.on("finish", () => {
-		console.log(url, method, res.statusCode, (performance.now() - time).toFixed(2) + "ms");
+		console.log(url, method, res.statusCode, (Date.now() - time).toFixed(2) + "ms");
 	})
 }
 
