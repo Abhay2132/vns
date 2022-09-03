@@ -14,23 +14,26 @@ function sendFile(filePath, res) {
 		res.statusCode = 404;
 		return res.end();
 	}
+	try {
 
-	const ext = filePath.split("/").at(-1).split("?").at(0).split(".").at(-1);
-	const size = fs.statSync(filePath).size;
-	const contentType = mime[ext] || "application/octet-stream";
+		var ext = filePath.split("/").at(-1).split("?").at(0).split(".").at(-1);
+		const size = fs.statSync(filePath).size;
+		const contentType = mime[ext] || "application/octet-stream";
 
-	fs.readFile(filePath, (err, data) => {
-		if (err) {
-			console.log({ err })
-			statusCode = 404;
-		}
-		const content = data.toString() || '';
+		fs.readFile(filePath, (err, data) => {
+			if (err) {
+				console.log({ err })
+				statusCode = 500;
+				return res.end();
+			}
+			const content = data.toString() || '';
 
-		res.statusCode = 200;
-		res.setHeader("Content-Type", contentType)
-		res.setHeader("Content-Length", size)
-		res.end(content);
-	})
+			res.statusCode = 200;
+			res.setHeader("Content-Type", contentType)
+			res.setHeader("Content-Length", size)
+			res.end(content);
+		})
+	} catch (e) { console.error({ e, filePath }) }
 }
 
 module.exports = {
